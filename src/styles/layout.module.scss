@@ -1,0 +1,31 @@
+$bg: #fff;
+$text: #000;
+$gray: #6e7781;
+$primary: #2563eb;
+$border: #d0d7de;
+$radius: 8px;
+$shadow: 0 2px 8px rgba(0,0,0,0.08);
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: $bg;
+  color: $text;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  .spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid $border;
+    border-top-color: $primary;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+  }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
