@@ -1,14 +1,9 @@
-$bg: #fff;
-$text: #000;
-$gray: #6e7781;
-$primary: #2563eb;
-$border: #d0d7de;
-$radius: 8px;
-$shadow: 0 2px 8px rgba(0,0,0,0.08);
+@use './vars.module.scss' as *;
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: $bg;
+  background: $white;
   color: $text;
 }
 
@@ -21,7 +16,7 @@ body {
   .spinner {
     width: 28px;
     height: 28px;
-    border: 3px solid $border;
+    border: 3px solid $gray;
     border-top-color: $primary;
     border-radius: 50%;
     animation: spin 0.9s linear infinite;

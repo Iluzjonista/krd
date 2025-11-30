@@ -1,15 +1,9 @@
-$bg: #fff;
-$text: #000;
-$gray: #6e7781;
-$primary: #2563eb;
-$border: #d0d7de;
-$radius: 8px;
-$shadow: 0 2px 8px rgba(0,0,0,0.08);
+@use './vars.module.scss' as *;
 
 @mixin spinner($size: 28px, $borderWidth: 3px, $color: $primary) {
   width: $size;
   height: $size;
-  border: $borderWidth solid $border;
+  border: $borderWidth solid $gray;
   border-top-color: $color;
   border-radius: 50%;
   animation: spin 0.9s linear infinite;

@@ -1,0 +1,6 @@
+@use '../../styles/vars.module.scss' as *;
+
+.searchPanel{
+    padding: 16px;
+    background-color: $primary;
+}
