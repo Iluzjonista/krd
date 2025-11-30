@@ -1,0 +1,9 @@
+@use '../styles/vars.module.scss' as *;
+
+.debtPage {
+    background-color: $white;
+
+    .tableContainer {
+        position: relative;
+    }
+}

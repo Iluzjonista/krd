@@ -1,5 +1,5 @@
 import styles from './searchPanel.module.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 export default function SearchPanel() {
   const [value, setValue] = useState('');

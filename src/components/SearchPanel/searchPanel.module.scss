@@ -3,4 +3,14 @@
 .searchPanel{
     padding: 16px;
     background-color: $primary;
+    .searchBtn {
+        background-color: $secondary;
+        color: $white;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+        &:hover {
+            background-color: darken($secondary, 10%);
+        }
+    }
 }
