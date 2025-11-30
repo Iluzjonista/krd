@@ -1,0 +1,17 @@
+@use "../../styles/vars.module.scss" as *;
+@use "../../styles/layout.module.scss" as *;
+
+.tableDebts {
+    width: 100%;
+    background-color: $white;
+    padding: 20px 0;
+
+    table {
+        width: 100%;
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+    }
+}

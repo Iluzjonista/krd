@@ -1,10 +1,16 @@
-@use './vars.module.scss' as *;
+@use "./vars.module.scss" as *;
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: $white;
   color: $text;
+}
+
+.container {
+  max-width: 1200px;
+  display: grid;
+  margin: 0 auto;
 }
 
 .loader {
@@ -23,4 +29,8 @@ body {
   }
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
