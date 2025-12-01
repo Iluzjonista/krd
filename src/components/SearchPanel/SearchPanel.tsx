@@ -1,8 +1,12 @@
 import styles from './searchPanel.module.scss';
 import { useState } from 'react';
 
-export default function SearchPanel() {
-    const [value, setValue] = useState('');
+type SearchPanelProps = {
+    onSearch: (phrase: string) => void;
+};
+
+export default function SearchPanel({ onSearch }: SearchPanelProps) {
+    const [value, setValue] = useState<string>('');
     return (
         <div className={styles.searchPanel}>
             <div className={styles.container}>
@@ -15,7 +19,7 @@ export default function SearchPanel() {
                         aria-label="Wyszukiwanie długów"
                     />
                     <button
-                        onClick={() => console.log('Szukaj:', value)}
+                        onClick={() => onSearch(value)}
                         className={styles.searchBtn}
                     >
                         Szukaj
