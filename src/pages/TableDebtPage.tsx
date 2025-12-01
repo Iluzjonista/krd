@@ -10,6 +10,7 @@ export default function TableDebtPage() {
     const [debts, setDebts] = useState<Debt[]>([]);
     const [count, setCount] = useState<number>(0);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -19,7 +20,7 @@ export default function TableDebtPage() {
                 const [number] = await Promise.all([GetDebtsCount()]);
                 setCount(number);
             } catch {
-                console.log('Nie udało się załadować danych.');
+                setError(true);
             } finally {
                 setLoading(false);
             }
@@ -31,7 +32,8 @@ export default function TableDebtPage() {
             <SearchPanel />
             <div className={styles.tableContainer}>
                 {/* testing purpose */}{count > 0 && <p>Łączna liczba dłużników w bazie: {count}</p>}
-                {loading ? <Loader /> : <TableDebts data={debts} />}
+                <TableDebts data={debts} loading={loading} />
+                {error && <div>Nie udało się załadować danych.</div>}
             </div>
         </div>
     );
