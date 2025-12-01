@@ -1,9 +1,9 @@
 import { Debt } from '../../utils/types';
+import { formatDate } from '../../utils/utils';
 import styles from './tableDebts.module.scss';
 
 type TableDebtsProps = {
   data: Debt[];
-  
 };
 
 
@@ -17,7 +17,7 @@ export default function TableDebts({ data }: TableDebtsProps) {
           <tr>
             <th>Dłużnik</th>
             <th>NIP</th>
-            <th>Kwota zadłużeniaValue</th>
+            <th>Kwota zadłużenia</th>
             <th>Data powstałego zobowiązania</th>
           </tr>
         </thead>
@@ -27,7 +27,7 @@ export default function TableDebts({ data }: TableDebtsProps) {
               <td>{debt.Name}</td>
               <td>{debt.NIP}</td>
               <td>{debt.Value}</td>
-              <td>{debt.Date}</td>
+              <td>{formatDate(debt.Date)}</td>
             </tr>
           ))}
         </tbody>
