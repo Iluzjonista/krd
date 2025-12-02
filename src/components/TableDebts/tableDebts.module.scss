@@ -4,7 +4,7 @@
 .tableDebts {
     width: 100%;
     background-color: $white;
-    padding: 20px 0;
+    padding: 0;
     text-align: left;
     th {
         font-size: 12px;
@@ -14,7 +14,7 @@
     }
     th,
     td {
-        padding: 10px 15px;
+        padding: 25px 17px 20px;
         border-bottom: 1px solid $gray;
     }
     .sortIcon {
