@@ -59,13 +59,26 @@ export default function TableDebtPage() {
         }
     }
 
+    function toggleSort(key: keyof Debt): void {
+        setSort(prevSort => {
+            if (prevSort.key === key) {
+                // Toggle direction
+                const newDir = prevSort.dir === 'asc' ? 'desc' : 'asc';
+                return { key, dir: newDir };
+            } else {
+                // New sort key, default to ascending
+                return { key, dir: 'asc' };
+            }
+        });
+    }
+
     return (
         <div className={styles.debtPage}>
             <SearchPanel onSearch={onSearch} />
             <div className={styles.tableContainer}>
-                {/* testing purpose */}{count > 0 && <p>Łączna liczba dłużników w bazie: {count}</p>}
-                <TableDebts data={sortedDebts} loading={loading || phraseFiltering} />
-                {error && <Error message={error} />}
+                {!error ?
+                    <TableDebts data={sortedDebts} loading={loading || phraseFiltering} sort={sort} onSort={toggleSort} /> :
+                    <Error message={error} />}
             </div>
         </div>
     );

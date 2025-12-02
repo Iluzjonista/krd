@@ -6,35 +6,59 @@ import styles from './tableDebts.module.scss';
 type TableDebtsProps = {
   data: Debt[];
   loading?: boolean;
+  sort: { key: keyof Debt; dir: 'asc' | 'desc' };
+  onSort: (key: keyof Debt) => void;
 };
 
+const headers: { key: keyof Debt; label: string; }[] = [
+  { key: 'Name', label: 'Dłużnik' },
+  { key: 'NIP', label: 'NIP' },
+  { key: 'Value', label: 'Kwota zadłużenia' },
+  { key: 'Date', label: 'Data' },
+];
 
-export default function TableDebts({ data, loading }: TableDebtsProps) {
+export default function TableDebts({ data, loading, sort, onSort }: TableDebtsProps) {
   return (
     <>
-      {loading ? <Loader /> :
-        <div className={styles.container}>
-          <table className={styles.tableDebts}>
-            <thead>
-              <tr>
-                <th>Dłużnik</th>
-                <th>NIP</th>
-                <th>Kwota zadłużenia</th>
-                <th>Data powstałego zobowiązania</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((debt) => (
-                <tr key={debt.Id}>
-                  <td>{debt.Name}</td>
-                  <td>{debt.NIP}</td>
-                  <td>{debt.Value}</td>
-                  <td>{formatDate(debt.Date)}</td>
-                </tr>
+      <div className={styles.container}>
+        <table className={styles.tableDebts}>
+          <thead>
+            <tr>
+              {headers.map(header => (
+                <th
+                  key={header.key as string}
+                  aria-sort={sort.key === header.key ? (sort.dir === 'asc' ? 'ascending' : 'descending') : 'none'}
+                  onClick={() => onSort(header.key)}
+                >
+                  <span>{header.label}</span>
+                  <span className={styles[`${sort.key === header.key ? sort.dir : ''}`]} />
+                  <span className={`${styles.sortIcon} ${styles[`${sort.key === header.key ? sort.dir : ''}`]}`} />
+                </th>
               ))}
-            </tbody>
-          </table>
-        </div>}
+            </tr>
+          </thead>
+          {loading ? <Loader /> :
+            data.length === 0 ?
+              <tbody>
+                <tr>
+                  <td colSpan={4} style={{ textAlign: 'center' }}>Brak danych do wyświetlenia</td>
+                </tr>
+              </tbody> :
+              <tbody>
+                {
+                  data.map((debt) => (
+                    <tr key={debt.Id}>
+                      <td>{debt.Name}</td>
+                      <td>{debt.NIP}</td>
+                      <td>{debt.Value}</td>
+                      <td>{formatDate(debt.Date)}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+          }
+        </table>
+      </div>
     </>
   );
 }
