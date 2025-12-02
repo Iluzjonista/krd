@@ -1,19 +1,23 @@
-@use '../../styles/vars.module.scss' as *;
-@use '../../styles/mixins.module.scss' as *;
+@use "../../styles/vars.module.scss" as *;
+@use "../../styles/mixins.module.scss" as *;
 @use "../../styles/layout.module.scss" as *;
 
 .loader {
-    position: absolute;
-    background: rgba(255,255,255,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 20vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  @media (min-width: 768px) {
     top: 10vh;
-    left: 50vw;
+  }
 
-    .spinner {
-      @include spinner(28px, 3px, $primary);
-    }
+  .spinner {
+    @include spinner(28px, 3px, $primary);
+  }
 }
 @keyframes spin {
   to {

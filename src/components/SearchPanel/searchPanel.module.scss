@@ -3,20 +3,23 @@
 
 .searchPanel {
     font-size: 14px;
-    padding: 35px 0;
+    padding: 20px;
     background-color: $primary;
+
     .title {
         color: $white;
         margin-bottom: 12px;
         text-transform: uppercase;
         font-weight: 600;
     }
+
     .search {
         padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
 
         input {
-            padding: 15px;
-            min-width: 405px;
+            padding: 10px;
             border: none;
             &:active,
             &:focus {
@@ -30,11 +33,24 @@
             background-color: $secondary;
             color: $white;
             border: none;
-            padding: 15px 50px;
+            padding: 10px;
             cursor: pointer;
 
             &:hover {
                 background-color: darken($secondary, 10%);
+            }
+        }
+    }
+    @media (min-width: 768px) {
+        padding: 35px 0;
+        .search {
+            flex-direction: row;
+            input {
+                padding: 15px;
+                min-width: 405px;
+            }
+            .searchBtn {
+                padding: 15px 50px;
             }
         }
     }
