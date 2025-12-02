@@ -4,8 +4,4 @@ export type Debt = {
   NIP: string;
   Date: string;
   Value: number;
-  Address: string;
-  DocumentType: string;
-  Price: number;
-  Number: string;
 };

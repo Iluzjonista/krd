@@ -17,10 +17,4 @@ export async function GetFilteredDebts(phrase: string): Promise<Debt[]> {
     if (response.status === 405) throw new Error('Phrase too short');
     if (!response.ok) throw new Error(`Network response was not ok, HTTP ${response.status}`);
     return response.json();
-}
-
-export async function GetDebtsCount(): Promise<number> {
-    const response = await fetch(`${BASEURL}/GetDebtsCount`);
-    if (!response.ok) throw new Error(`Network response was not ok, HTTP ${response.status}`);
-    return response.json();
 };
