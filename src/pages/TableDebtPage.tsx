@@ -3,13 +3,12 @@ import SearchPanel from "../components/SearchPanel/SearchPanel";
 import TableDebts from "../components/TableDebts/TableDebts";
 import Error from "../components/Error/Error";
 import { Debt } from "../utils/types";
-import { GetTopDebts, GetFilteredDebts, GetDebtsCount } from "../utils/api";
+import { GetTopDebts, GetFilteredDebts } from "../utils/api";
 import styles from "./tableDebtPage.module.scss";
 import { sortDebts } from "../utils/utils";
 
 export default function TableDebtPage() {
     const [debts, setDebts] = useState<Debt[]>([]);
-    const [count, setCount] = useState<number>(0);
     const [sort, setSort] = useState<{ key: keyof Debt; dir: 'asc' | 'desc' }>({ key: 'Name', dir: 'asc' });
     const [loading, setLoading] = useState<boolean>(true);
     const [phraseFiltering, setPhraseFiltering] = useState<boolean>(false);
@@ -18,9 +17,8 @@ export default function TableDebtPage() {
     useEffect(() => {
         (async () => {
             try {
-                const [top, number] = await Promise.all([GetTopDebts(), GetDebtsCount()]);
+                const [top] = await Promise.all([GetTopDebts()]);
                 setDebts(top);
-                setCount(number);
             } catch {
                 setError('Wystąpił błąd podczas ładowania danych. Proszę spróbować ponownie później.');
             } finally {
