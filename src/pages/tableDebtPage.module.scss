@@ -3,14 +3,9 @@
 
 .debtPage {
     background-color: $white;
-    height: 100vh;
 
     .tableContainer {
         position: relative;
         overflow-x: auto;
-    }
-
-    @media (min-width: 768px) {
-        height: auto;
     }
 }

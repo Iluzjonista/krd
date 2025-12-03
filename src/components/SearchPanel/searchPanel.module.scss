@@ -43,12 +43,15 @@
     }
     @media (min-width: 768px) {
         padding: 35px 0;
+
         .search {
             flex-direction: row;
+            
             input {
                 padding: 15px;
                 min-width: 405px;
             }
+
             .searchBtn {
                 padding: 15px 50px;
             }

@@ -8,5 +8,8 @@
     border: 1px solid $secondary;
     background-color: lighten($secondary, 40%);
     border-radius: 4px;
-    margin: 20px 0;
+    margin: 10px;
+    @media (min-width: 768px) {
+        margin: 20px 0;
+    }
 }
