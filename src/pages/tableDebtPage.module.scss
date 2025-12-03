@@ -7,5 +7,8 @@
     .tableContainer {
         position: relative;
         overflow-x: auto;
+        @media (min-width: 480px) {
+            overflow: visible;
+        }
     }
 }

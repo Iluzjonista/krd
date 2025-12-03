@@ -17,6 +17,7 @@ export default function SearchPanel({ onSearch }: SearchPanelProps) {
                         onChange={e => setValue(e.target.value)}
                         placeholder=""
                         aria-label="Wyszukiwanie długów"
+                        role="searchbox"
                     />
                     <button
                         onClick={() => onSearch(value)}
