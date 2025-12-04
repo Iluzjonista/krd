@@ -7,6 +7,15 @@ type SearchPanelProps = {
 
 export default function SearchPanel({ onSearch }: SearchPanelProps) {
     const [value, setValue] = useState<string>('');
+    const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+        onSearch(value)
+    }
+
+    if (event.key === "Escape") {
+      setValue("");
+    }
+  };
     return (
         <div className={styles.searchPanel}>
             <div className={styles.container}>
@@ -15,6 +24,7 @@ export default function SearchPanel({ onSearch }: SearchPanelProps) {
                     <input
                         value={value}
                         onChange={e => setValue(e.target.value)}
+                        onKeyDown={handleKeyPress}
                         placeholder=""
                         aria-label="Wyszukiwanie długów"
                         role="searchbox"
