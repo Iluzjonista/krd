@@ -6,7 +6,6 @@
     background-color: $white;
     padding: 0;
     text-align: left;
-    height: 100vh;
 
     th {
         font-size: 12px;
@@ -35,8 +34,5 @@
             clip-path: polygon(0 0, 100% 0, 50% 100%);
             background: $gray;
         }
-    }
-    @media (min-width: 768px) {
-        height: 100%;
     }
 }

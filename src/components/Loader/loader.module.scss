@@ -3,18 +3,10 @@
 @use "../../styles/layout.module.scss" as *;
 
 .loader {
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 20vh;
-  left: 50vw;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-
-  @media (min-width: 768px) {
-    top: 10vh;
-  }
+  margin: 0 auto;
 
   .spinner {
     @include spinner(28px, 3px, $primary);

@@ -37,26 +37,31 @@ export default function TableDebts({ data, loading, sort, onSort }: TableDebtsPr
               ))}
             </tr>
           </thead>
-          {loading ? <Loader /> :
-            data.length === 0 ?
-              <tbody>
+          <tbody>
+            {loading ?
+              <tr>
+                <td colSpan={4}>
+                  <Loader />
+                </td>
+              </tr> :
+              data.length === 0 ?
                 <tr>
                   <td colSpan={4} style={{ textAlign: 'center' }}>Brak danych do wyświetlenia</td>
-                </tr>
-              </tbody> :
-              <tbody>
-                {
-                  data.map((debt) => (
-                    <tr key={debt.Id}>
-                      <td>{debt.Name}</td>
-                      <td>{debt.NIP}</td>
-                      <td>{debt.Value}</td>
-                      <td>{formatDate(debt.Date)}</td>
-                    </tr>
-                  ))
-                }
-              </tbody>
-          }
+                </tr> :
+                <>
+                  {
+                    data.map((debt) => (
+                      <tr key={debt.Id}>
+                        <td>{debt.Name}</td>
+                        <td>{debt.NIP}</td>
+                        <td>{debt.Value}</td>
+                        <td>{formatDate(debt.Date)}</td>
+                      </tr>
+                    ))
+                  }
+                </>
+            }
+          </tbody>
         </table>
       </div>
     </>
